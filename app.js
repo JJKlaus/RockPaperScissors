@@ -1,4 +1,5 @@
-
+let compWins = 0;
+let userWins = 0;
 let userChoice = 'none';
 
 function getComputerChoice(){
@@ -45,6 +46,7 @@ function compare(comp, user){
     //return 2 on tie
     console.log('comp value ' + comp + '     user value ' + user)
     if(comp == 'scissors'){
+        curCpu.src = 'images/scissors.png';
         if(user == 'scissors'){
             return 2;
         }
@@ -56,6 +58,7 @@ function compare(comp, user){
         }
     }
     else if(comp == 'rock'){
+        curCpu.src = 'images/rock.png';
         if(user == 'scissors'){
             return 0;
         }
@@ -67,6 +70,7 @@ function compare(comp, user){
         }
     }
     else if(comp == 'paper'){
+        curCpu.src = 'images/paper.png';
         if(user == 'scissors'){
             return 1;
         }
@@ -89,8 +93,7 @@ function round(userChoice){
 
 }
 
-let compWins = 0;
-let userWins = 0;
+
 
 function game(winner){
     /*let roundNum = 0;
@@ -127,36 +130,49 @@ function game(winner){
     else if(winner == 1){
         userWins++;
         console.log('User wins!');
+        scoreUser.textContent = userWins;
     }
     else if(winner == 0){
         compWins++;
         console.log('Computer Wins!');
+        scoreCpu.textContent = compWins;
     }
     else{
         console.log('error');
      }
     if(userWins==3){
         console.log('The User won the match!');
+        alert('The User Won the Match!');
+        scoreCpu.textContent = '0';
+        scoreUser.textContent = '0';
+        userWins = 0;
+        compWins = 0;
     }
     else if(compWins==3){
         console.log('The Computer won the match!');
+        alert('The Computer Won the Match!');
+        scoreCpu.textContent = '0';
+        scoreUser.textContent = '0';
     }
 }
 
 function rockPicked(){
     userChoice = 'rock';
+    curUser.src= 'images/rock.png';
     let winner = round(userChoice);
     game(winner);
 }
 
 function paperPicked(){
     userChoice = 'paper';
+    curUser.src= 'images/paper.png';
     let winner = round(userChoice);
     game(winner);
 }
 
 function scissorsPicked(){
     userChoice = 'scissors';
+    curUser.src= 'images/scissors.png';
     let winner = round(userChoice);
     game(winner);
 }
@@ -167,11 +183,15 @@ window.onload = function(){
     var btnS = document.querySelectorAll('#btnS');
     var curUser = document.querySelectorAll('#curUser');
     var curCpu = document.querySelectorAll('#curCpu');
+    var scoreUser = document.querySelectorAll('#scoreUser');
+    var scoreCpu = document.querySelectorAll('#scoreCpu');
 
     
     btnR[0].addEventListener("click", rockPicked);
     btnP[0].addEventListener("click", paperPicked);
     btnS[0].addEventListener("click", scissorsPicked)
 
+    scoreUser[0].textContent = '0';
+    scoreCpu[0].textContent = '0';
 
 }
