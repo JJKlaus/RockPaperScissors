@@ -1,0 +1,71 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: burlywood;
+    
+}
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.scoreboard{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-self: center;
+}
+
+.gameContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ladder{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+}
+
+.actionPane{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+}
+
+.previousRound{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.footer{
+    display: flex;
+    align-content: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+h1{
+    align-self: center;
+}
+
+h3{
+    align-self: center;
+}
