@@ -1,3 +1,6 @@
+
+let userChoice = 'none';
+
 function getComputerChoice(){
     //random value 0-2
     //convert int to string
@@ -20,11 +23,19 @@ function getComputerChoice(){
     }
 }
 
-function getUserChoice(){
+function getUserChoice(userChoice,hasPicked){
     //get user choice as a string 
     //ensure not case sensitive
-    let user = prompt('Choose rock, paper, or scissors')
-    return user;
+    //let user = prompt('Choose rock, paper, or scissors')
+    //return user;
+
+    //for ui based user choice
+    //listen for alert maybe 
+    //send alerts from btn press functions
+    if(hasPicked == 1){
+        let user = userChoice;
+        return user;
+    }
 }
 
 function compare(comp, user){
@@ -68,17 +79,21 @@ function compare(comp, user){
     }
 }
 
-function round(){
+function round(userChoice){
     //plays one round of rock paper scissors
+    hasPicked = 0;
     let comp = getComputerChoice();
-    let user = getUserChoice();
-    let winner = compare(comp, user);
+    //let user = getUserChoice(userChoice);
+    let winner = compare(comp, userChoice);
     return winner;
 
 }
 
-function game(){
-    let roundNum = 0;
+let compWins = 0;
+let userWins = 0;
+
+function game(winner){
+    /*let roundNum = 0;
     let compWins = 0;
     let userWins = 0;
     for(roundNum; roundNum<5; roundNum++){
@@ -104,7 +119,59 @@ function game(){
     }
     else{
         console.log('The User won the match!');
+    }*/
+
+    if(winner == 2){
+        console.log('its a tie');
+    }
+    else if(winner == 1){
+        userWins++;
+        console.log('User wins!');
+    }
+    else if(winner == 0){
+        compWins++;
+        console.log('Computer Wins!');
+    }
+    else{
+        console.log('error');
+     }
+    if(userWins==3){
+        console.log('The User won the match!');
+    }
+    else if(compWins==3){
+        console.log('The Computer won the match!');
     }
 }
 
-//game();
+function rockPicked(){
+    userChoice = 'rock';
+    let winner = round(userChoice);
+    game(winner);
+}
+
+function paperPicked(){
+    userChoice = 'paper';
+    let winner = round(userChoice);
+    game(winner);
+}
+
+function scissorsPicked(){
+    userChoice = 'scissors';
+    let winner = round(userChoice);
+    game(winner);
+}
+
+window.onload = function(){
+    var btnR = document.querySelectorAll('#btnR');
+    var btnP = document.querySelectorAll('#btnP');
+    var btnS = document.querySelectorAll('#btnS');
+    var curUser = document.querySelectorAll('#curUser');
+    var curCpu = document.querySelectorAll('#curCpu');
+
+    
+    btnR[0].addEventListener("click", rockPicked);
+    btnP[0].addEventListener("click", paperPicked);
+    btnS[0].addEventListener("click", scissorsPicked)
+
+
+}
